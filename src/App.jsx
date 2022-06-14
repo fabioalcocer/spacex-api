@@ -1,6 +1,6 @@
 import "./App.css";
 import { Image } from "@chakra-ui/react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import LaunchDetails from "./components/LaunchDetails";
 import LaunchList from "./components/LaunchList";

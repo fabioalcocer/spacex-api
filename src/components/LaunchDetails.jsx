@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Box, Flex, Text, Spacer, Tag, Button, Icon } from "@chakra-ui/react";
+import { Box, Flex, Text, Spacer, Tag } from "@chakra-ui/react";
 
 import * as API from "../services/launches";
 
@@ -8,14 +8,14 @@ function LaunchDetails() {
   const { launchId } = useParams();
   const [launch, setLaunch] = useState({});
 
-  useState(() => {
+  useEffect(() => {
     API.getLaunchByFlyNumber(launchId)
       .then(setLaunch)
       .catch((err) => console.error(err));
   }, [launchId]);
 
   return (
-    <Box bg="gray.100" p={4} m={4} borderRadius="lg">
+    <Box as="article" bg="gray.100" p={4} m={4} borderRadius="lg">
       {!launch ? (
         <div>Loading...</div>
       ) : (
@@ -30,7 +30,18 @@ function LaunchDetails() {
           </Tag>
         </Flex>
       )}
-      <Box>Rocket: {launch.rocket?.rocket_name}</Box>
+      <Text>
+        <Box as="span" fontSize={"lg"} fontWeight="bold">
+          Rocket:{" "}
+        </Box>
+        {launch.rocket?.rocket_name}, {launch.rocket?.rocket_type}
+      </Text>
+      <Text mt={1}>
+        <Box as="span" fontSize={"md"} fontWeight="bold">
+          Nation:{" "}
+        </Box>
+        {launch.rocket?.second_stage?.payloads[0].nationality}
+      </Text>
     </Box>
   );
 }
