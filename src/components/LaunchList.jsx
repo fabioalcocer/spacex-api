@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Heading } from "@chakra-ui/react";
+import { Heading, Flex, Spinner, Center } from "@chakra-ui/react";
 import * as API from "../services/launches";
 import LaunchItem from "./LaunchItem";
 
@@ -18,7 +18,11 @@ const LaunchList = () => {
         SpaceX Launches
       </Heading>
       {launches.length === 0 ? (
-        <div>Loading... </div>
+        <Flex justify="center" h="60vh">
+          <Center>
+            <Spinner size="xl" color="purple" mx="auto" />
+          </Center>
+        </Flex>
       ) : (
         <section>
           {launches.map((launch) => (
