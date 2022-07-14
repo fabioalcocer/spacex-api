@@ -13,7 +13,7 @@ function LaunchItem(launch) {
           Mission <strong>{launch.mission_name}</strong> ({launch.launch_year})
         </Text>
         <Spacer />
-        <Tag p={4} colorScheme={launch.launch_success ? "green" : "red"}>
+        <Tag p={3} colorScheme={launch.launch_success ? "green" : "red"}>
           {launch.launch_success ? "Success" : "Failure"}
         </Tag>
       </Flex>
